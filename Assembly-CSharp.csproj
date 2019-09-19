@@ -101,6 +101,7 @@
     <Compile Include="Assets\scripts\dataScripts\npcData.cs" />
     <Compile Include="Assets\scripts\editorScripts\fsmEditor.cs" />
     <Compile Include="Assets\scripts\editorScripts\npcEditor.cs" />
+    <Compile Include="Assets\scripts\manageScripts\cursorScript.cs" />
     <Compile Include="Assets\scripts\manageScripts\FSM.cs" />
     <Compile Include="Assets\scripts\manageScripts\gameMng.cs" />
     <Compile Include="Assets\scripts\manageScripts\inventoryCont.cs" />
