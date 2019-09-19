@@ -435,6 +435,13 @@ public class combat : states
     float moveTime = 0;
     float stayTime = 0;
     bool dir = false;
+    enum combatState
+    {
+        idle,
+        move,
+        hit
+    }
+    combatState cs = combatState.idle;
     public combat(Transform target, npcAgents nav)
     {
         sType = stateType.combat;
@@ -444,7 +451,11 @@ public class combat : states
         agent.agentTrn.speed = 0.7f;
         agent.agentAnim.SetBool("toCombatIdle", true);
     }
-    public override void stateUpdate()
+    public void idleUpdate()
+    {
+
+    }
+    public void moveUpdate()
     {
         if (moveTime <= 0)
         {
@@ -472,6 +483,10 @@ public class combat : states
                 agent.agentTrn.transform.LookAt(plTrn);
             }
         }
+    }
+    public override void stateUpdate()
+    {
+        
         //base.stateUpdate();
         //placeNPC...
     }

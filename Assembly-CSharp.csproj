@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EC0FB211-DA6B-80DA-BD10-FDDF9492E4F6}</ProjectGuid>
+    <ProjectGuid>{77EA1BC5-3964-EC19-B510-3DDE804C05CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -116,25 +116,25 @@
     <None Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\README.txt" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -320,13 +320,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -676,15 +676,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{CBF2E0EB-60B5-25D7-3982-FD8ABFBE56D7}</Project>
+      <Project>{5F1E660C-CEEA-AD55-A089-818230D34D10}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{BCED6840-76A4-56F0-B33B-7AD0699C1ED4}</Project>
+      <Project>{0D19B8CF-220B-760A-D99A-88D4168EFB81}</Project>
       <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{2163F7E9-E8EB-ABF1-1A73-6F261EA1FD6F}</Project>
+      <Project>{9C5C45EC-99DA-69EF-1405-68CBAD2D8EBB}</Project>
       <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
