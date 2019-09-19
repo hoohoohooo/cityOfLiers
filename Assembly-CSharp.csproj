@@ -114,6 +114,7 @@
     <Compile Include="Assets\scripts\testScripts\npcContTemp.cs" />
     <None Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\README_Basic.txt" />
     <None Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\README.txt" />
+    <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/assesment_unity1/cityOfThievesAndLiers/cityOfLiers/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

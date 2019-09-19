@@ -225,7 +225,7 @@ public class moveToState : states
             {
                 if (hit.transform == plTrn)
                 {
-                    if (hit.distance < 10)
+                    if (hit.distance < 20)
                     {
                         agent.lastState = this;
                         chaseState tmp = new chaseState(plTrn, agent);
@@ -280,7 +280,7 @@ public class chaseState : states
     RaycastHit hit;
     Vector3 lastDestination;
     float destDist = 0.5f;
-    float combatDist = 2;
+    float combatDist = 5;
     List<Vector3> playerPosList;
     //float plTrackTimer = 0;
     //float trackTime = 0.5f;
@@ -311,29 +311,6 @@ public class chaseState : states
         agent.character.Move(agent.agentTrn.desiredVelocity, false, false);
         lastDestination = target.position;
     }
-    //public void trackPlayer()
-    //{
-    //    plTrackTimer += Time.deltaTime;
-    //    if (plTrackTimer > trackTime)
-    //    {
-    //        plTrackTimer = 0;
-    //        Vector3 tmp = target.position;
-    //        playerPosList.Add(target.position);
-    //        if (playerPosList.Count > 5)
-    //        {
-    //            playerPosList.Remove(playerPosList[0]);
-    //        }
-    //    }
-    //    if (Vector3.Distance(agent.agentTrn.transform.position, playerPosList[0]) < destDist)
-    //    {
-    //        playerPosList.Remove(playerPosList[0]);
-    //    }
-    //    else
-    //    {
-    //        agent.agentTrn.SetDestination(playerPosList[0]);
-    //        agent.character.Move(agent.agentTrn.desiredVelocity, false, false);
-    //    }
-    //}
     public override void stateUpdate()
     {
         //base.stateUpdate();
@@ -441,7 +418,7 @@ public class combat : states
         move,
         hit
     }
-    combatState cs = combatState.idle;
+    combatState cs = combatState.move;
     public combat(Transform target, npcAgents nav)
     {
         sType = stateType.combat;
@@ -449,7 +426,8 @@ public class combat : states
         agent = nav;
         agent.curState = this;
         agent.agentTrn.speed = 0.7f;
-        agent.agentAnim.SetBool("toCombatIdle", true);
+        agent.agentAnim.SetBool("toCombat", true);
+        //agent.agentAnim.SetBool("OnGround", false);
     }
     public void idleUpdate()
     {
@@ -462,10 +440,16 @@ public class combat : states
             moveTime = Random.Range(1.5f, 3);
             if (Random.value >= 0.5f)
             {
+                agent.agentAnim.SetBool("toCombatMoveRight", false);
+                agent.agentAnim.SetBool("toCombatIdle", false);
+                agent.agentAnim.SetBool("toCombatMoveLeft", true);
                 dir = false;
             }
             else
             {
+                agent.agentAnim.SetBool("toCombatMoveRight", true);
+                agent.agentAnim.SetBool("toCombatIdle", false);
+                agent.agentAnim.SetBool("toCombatMoveLeft", false);
                 dir = true;
             }
         }
@@ -486,7 +470,20 @@ public class combat : states
     }
     public override void stateUpdate()
     {
-        
+        if(cs == combatState.move)
+        {
+            moveUpdate();
+        }else if(cs == combatState.idle)
+        {
+            //agent.agentAnim.SetBool("toCombatMoveRight", false);
+            //agent.agentAnim.SetBool("toCombatIdle", true);
+            //agent.agentAnim.SetBool("toCombatMoveLeft", false);
+        }else if(cs == combatState.hit)
+        {
+            //agent.agentAnim.SetBool("toCombat", false);
+            //to hit state;
+            //agent.agentAnim.SetBool("toHit", true);
+        }
         //base.stateUpdate();
         //placeNPC...
     }
