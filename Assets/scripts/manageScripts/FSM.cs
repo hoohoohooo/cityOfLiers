@@ -419,6 +419,8 @@ public class combat : states
         hit
     }
     combatState cs = combatState.move;
+    float toChaseDistance = 7;
+
     public combat(Transform target, npcAgents nav)
     {
         sType = stateType.combat;
@@ -468,6 +470,21 @@ public class combat : states
             }
         }
     }
+
+    public void checkPlDistance()
+    {
+        if (Vector3.Distance(plTrn.position, agent.agentTrn.transform.position) > toChaseDistance)
+        {
+            //animChange
+            agent.agentAnim.SetBool("toCombat", false);
+            agent.agentAnim.SetBool("toCombatIdle", true);
+            agent.agentAnim.SetBool("toCombatMoveRight", false);
+            agent.agentAnim.SetBool("toCombatMoveLeft", false);
+            chaseState tmp = new chaseState(plTrn, agent);
+            agent.curState = tmp;
+            
+        }
+    }
     public override void stateUpdate()
     {
         if(cs == combatState.move)
@@ -484,6 +501,7 @@ public class combat : states
             //to hit state;
             //agent.agentAnim.SetBool("toHit", true);
         }
+        checkPlDistance();
         //base.stateUpdate();
         //placeNPC...
     }
