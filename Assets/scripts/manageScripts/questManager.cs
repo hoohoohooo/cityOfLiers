@@ -11,6 +11,8 @@ public class questManager : MonoBehaviour
     public List<questSet> activeSideQuest;
     public questSet activeMainQuest;
 
+    public quest focusedQuest = null;
+
     public int questIndex = 0;
 
     private void Awake()
@@ -23,9 +25,15 @@ public class questManager : MonoBehaviour
         {
             Destroy(this);
         }
+        onlyForDebug();
     }
 
-
+    void onlyForDebug()
+    {
+        focusedQuest = new quest();
+        focusedQuest.objType = quest.objectiveType.place;
+        focusedQuest.destination = new Vector3(10, 0, 10);
+    }
 
 
     // Start is called before the first frame update
@@ -43,17 +51,17 @@ public class questManager : MonoBehaviour
 [System.Serializable]
 public class quest
 {
-    enum objectiveType
+    public enum objectiveType
     {
         place,
         npc,
         item,
     }
-    objectiveType objType;
+    public objectiveType objType;
     public Vector3 destination;
     public Transform objectiveNPC = null;
     public questEvent qEvent = null;
-    public itemBase questItem;
+    public itemBase questItem = null;
     public bool questDone;
     public bool checkQuestDone()
     {
