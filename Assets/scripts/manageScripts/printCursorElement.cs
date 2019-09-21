@@ -41,11 +41,6 @@ public class printCursorElement : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     printLine(col.square[i]);
-                    //GL.Begin(GL.LINES);
-                    //GL.Color(Color.red);
-                    //GL.Vertex(col.square[i].start);
-                    //GL.Vertex(col.square[i].end);
-                    //GL.End();
 
                 }
                 GL.Begin(GL.LINES);

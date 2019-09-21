@@ -405,7 +405,9 @@ public class hitPlayer : states
         agent = nav;
         agent.curState = this;
         agent.agentTrn.speed = 0.7f;
+        agent.agentAnim.SetBool("toHit", true);
     }
+
 }
 public class combat : states
 {
@@ -497,9 +499,9 @@ public class combat : states
             //agent.agentAnim.SetBool("toCombatMoveLeft", false);
         }else if(cs == combatState.hit)
         {
-            //agent.agentAnim.SetBool("toCombat", false);
             //to hit state;
             //agent.agentAnim.SetBool("toHit", true);
+
         }
         checkPlDistance();
         //base.stateUpdate();
