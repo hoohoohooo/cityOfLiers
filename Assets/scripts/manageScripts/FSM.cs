@@ -407,12 +407,23 @@ public class hitPlayer : states
         agent.agentTrn.speed = 0.7f;
         agent.agentAnim.SetBool("toHit", true);
     }
-
+    void chasePlayer()
+    {
+        if (Vector3.Distance(plTrn.position, agent.agentTrn.transform.position) < 2)
+        {
+            agent.agentAnim.SetBool("toPunch", true);
+        }
+    }
+    public override void stateUpdate()
+    {
+        //base.stateUpdate();
+        chasePlayer();
+    }
 }
 public class combat : states
 {
     float moveTime = 0;
-    float stayTime = 0;
+    float idleTime = 0;
     bool dir = false;
     enum combatState
     {
@@ -435,12 +446,39 @@ public class combat : states
     }
     public void idleUpdate()
     {
+        if (idleTime <= 0)
+        {
+            if (toNextState() == 0)
+            {
 
+            }
+            else
+            {
+                return;
+            }
+            idleTime = Random.Range(1.5f, 3);
+            agent.agentAnim.SetBool("toCombatMoveRight", false);
+            agent.agentAnim.SetBool("toCombatIdle", true);
+            agent.agentAnim.SetBool("toCombatMoveLeft", false);
+        }
+        else
+        {
+            idleTime -= Time.deltaTime;
+            agent.agentTrn.transform.LookAt(plTrn);
+        }
     }
     public void moveUpdate()
     {
         if (moveTime <= 0)
         {
+            if(toNextState() == 1)
+            {
+
+            }
+            else
+            {
+                return;
+            }
             moveTime = Random.Range(1.5f, 3);
             if (Random.value >= 0.5f)
             {
@@ -487,6 +525,32 @@ public class combat : states
             
         }
     }
+
+    int toNextState()
+    {
+        float nNum = Random.Range(0, 1.5f);
+        if (nNum < 0.5f) {
+            cs = combatState.idle;
+            return 0;
+        }else if (nNum < 1)
+        {
+            cs = combatState.move;
+            return 1;
+        }
+        else
+        {
+            hitPlayer tmp = new hitPlayer(plTrn, agent);
+            agent.curState = tmp;
+            //agent.agentAnim.SetBool("toCombat", false);
+            agent.agentAnim.SetBool("toCombatIdle", false);
+            agent.agentAnim.SetBool("toCombatMoveRight", false);
+            agent.agentAnim.SetBool("toCombatMoveLeft", false);
+            agent.agentAnim.SetBool("toHit", true);
+            agent.agentTrn.SetDestination(plTrn.position);
+            return 2;
+        }
+    }
+
     public override void stateUpdate()
     {
         if(cs == combatState.move)
@@ -497,6 +561,7 @@ public class combat : states
             //agent.agentAnim.SetBool("toCombatMoveRight", false);
             //agent.agentAnim.SetBool("toCombatIdle", true);
             //agent.agentAnim.SetBool("toCombatMoveLeft", false);
+            idleUpdate();
         }else if(cs == combatState.hit)
         {
             //to hit state;
