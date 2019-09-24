@@ -409,9 +409,14 @@ public class hitPlayer : states
     }
     void chasePlayer()
     {
-        if (Vector3.Distance(plTrn.position, agent.agentTrn.transform.position) < 2)
+        if (Vector3.Distance(plTrn.position, agent.agentTrn.transform.position) < 3)
         {
             agent.agentAnim.SetBool("toPunch", true);
+            agent.agentTrn.speed = 0;
+        }
+        else
+        {
+            agent.agentAnim.SetBool("toPunch", false);
         }
     }
     public override void stateUpdate()
@@ -442,6 +447,8 @@ public class combat : states
         agent.curState = this;
         agent.agentTrn.speed = 0.7f;
         agent.agentAnim.SetBool("toCombat", true);
+        agent.agentAnim.SetBool("toHit", false);
+        agent.agentAnim.SetBool("toPunch", false);
         //agent.agentAnim.SetBool("OnGround", false);
     }
     public void idleUpdate()

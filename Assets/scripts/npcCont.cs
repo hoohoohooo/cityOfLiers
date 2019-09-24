@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class npcCont : MonoBehaviour
 {
-    npcAgents agent;
+    public npcAgents agent;
     public List<Vector3> destinationPoints;
     public states.stateType curStateType;
     [SerializeField]

@@ -21,6 +21,12 @@ public class tmpScr : StateMachineBehaviour
     //{
     //    
     //}
+    public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+        npcAgents agent = animator.transform.GetComponent<npcCont>().agent;
+        agent.curState = new combat(agent.curState.plTrn, agent);
+        //animator.transform.GetComponent<npcCont>().agent.curState = new combat()
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
