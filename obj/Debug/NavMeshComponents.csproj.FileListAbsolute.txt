@@ -541,4 +541,3 @@ F:\assesment_unity1\cityOfThievesAndLiers\cityOfLiers\obj\Debug\NavMeshComponent
 F:\assesment_unity1\cityOfThievesAndLiers\cityOfLiers\obj\Debug\NavMeshComponents.csproj.CopyComplete
 F:\assesment_unity1\cityOfThievesAndLiers\cityOfLiers\obj\Debug\NavMeshComponents.dll
 F:\assesment_unity1\cityOfThievesAndLiers\cityOfLiers\obj\Debug\NavMeshComponents.pdb
-F:\assesment_unity1\cityOfThievesAndLiers\cityOfLiers\Temp\bin\Debug\Boo.Lang.dll

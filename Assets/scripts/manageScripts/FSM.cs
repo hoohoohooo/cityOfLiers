@@ -418,6 +418,8 @@ public class hitPlayer : states
         {
             agent.agentAnim.SetBool("toPunch", false);
         }
+        agent.agentTrn.transform.LookAt(plTrn);
+        //need to ray player to check npc is watching player 
     }
     public override void stateUpdate()
     {
@@ -446,9 +448,11 @@ public class combat : states
         agent = nav;
         agent.curState = this;
         agent.agentTrn.speed = 0.7f;
+        agent.agentTrn.SetDestination(agent.agentTrn.transform.position);
         agent.agentAnim.SetBool("toCombat", true);
         agent.agentAnim.SetBool("toHit", false);
         agent.agentAnim.SetBool("toPunch", false);
+        agent.agentAnim.SetBool("toCombatIdle", true);
         //agent.agentAnim.SetBool("OnGround", false);
     }
     public void idleUpdate()
@@ -464,6 +468,7 @@ public class combat : states
                 return;
             }
             idleTime = Random.Range(1.5f, 3);
+            agent.agentTrn.speed = 0;
             agent.agentAnim.SetBool("toCombatMoveRight", false);
             agent.agentAnim.SetBool("toCombatIdle", true);
             agent.agentAnim.SetBool("toCombatMoveLeft", false);
@@ -487,6 +492,7 @@ public class combat : states
                 return;
             }
             moveTime = Random.Range(1.5f, 3);
+            agent.agentTrn.speed = 0.7f;
             if (Random.value >= 0.5f)
             {
                 agent.agentAnim.SetBool("toCombatMoveRight", false);
