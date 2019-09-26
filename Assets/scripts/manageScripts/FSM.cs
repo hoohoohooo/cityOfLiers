@@ -278,7 +278,7 @@ public class chaseState : states
     Ray ray;
     Vector3 dir;
     RaycastHit hit;
-    Vector3 lastDestination;
+    public Vector3 lastDestination;
     float destDist = 0.5f;
     float combatDist = 5;
     List<Vector3> playerPosList;
@@ -290,6 +290,7 @@ public class chaseState : states
         agent = nav;
         playerPosList = new List<Vector3>();
         sType = stateType.chase;
+        agent.agentTrn.speed = 0.7f;
     }
     public bool rayTarget()
     {
@@ -327,6 +328,10 @@ public class chaseState : states
         {
             //to searchState
             searchState state = new searchState(target,ref agent);
+        }
+        else
+        {
+            agent.agentTrn.SetDestination(lastDestination);
         }
     }
 }
@@ -420,6 +425,37 @@ public class hitPlayer : states
         }
         agent.agentTrn.transform.LookAt(plTrn);
         //need to ray player to check npc is watching player 
+        if (!rayTarget())
+        {
+            //to chase state;
+            chaseState tmp = new chaseState(plTrn, agent);
+            agent.agentAnim.SetBool("toCombatIdle", false);
+            agent.agentAnim.SetBool("toCombatMoveLeft", false);
+            agent.agentAnim.SetBool("toCombatMoveRight", false);
+            agent.agentAnim.SetBool("toCombat", false);
+            agent.agentAnim.SetBool("toHit", false);
+            agent.agentAnim.SetBool("toPunch", false);
+            tmp.lastDestination = plTrn.position;
+            agent.curState = tmp;
+            
+        }
+    }
+    Ray ray;
+    RaycastHit hit;
+    Vector3 dir;
+    bool rayTarget()
+    {
+        dir = plTrn.position - agent.agentTrn.transform.position;
+        ray = new Ray(agent.agentTrn.transform.position, plTrn.position);
+
+        if (Physics.Raycast(agent.agentTrn.transform.position, dir, out hit))
+        {
+            if (hit.transform == plTrn)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     public override void stateUpdate()
     {
@@ -534,6 +570,7 @@ public class combat : states
             agent.agentAnim.SetBool("toCombatMoveRight", false);
             agent.agentAnim.SetBool("toCombatMoveLeft", false);
             chaseState tmp = new chaseState(plTrn, agent);
+            tmp.lastDestination = plTrn.position;
             agent.curState = tmp;
             
         }
