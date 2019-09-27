@@ -45,7 +45,10 @@ public class questManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach(questSet s in activeSideQuest)
+        {
+            s.checkQuest();
+        }
     }
 }
 [System.Serializable]
@@ -74,6 +77,13 @@ public class questSet
 {
     public List<quest> questList;
     public int questIndex = 0;
+    public void checkQuest()
+    {
+        if (questList[questIndex].checkQuestDone())
+        {
+            questIndex++;
+        }
+    }
 }
 public class questEvent
 {

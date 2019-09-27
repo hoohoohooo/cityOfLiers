@@ -397,7 +397,6 @@ public class searchState : states
         {
             moveToState tmp = new moveToState(agent, plTrn);
             agent.curState = tmp;
-            Debug.Log(stateTimer);
         }
     }
 }
