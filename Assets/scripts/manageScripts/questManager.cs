@@ -12,6 +12,7 @@ public class questManager : MonoBehaviour
     public questSet activeMainQuest;
 
     public quest focusedQuest = null;
+    public questSet focusedSideQuest = null;
 
     public int questIndex = 0;
 
@@ -45,9 +46,28 @@ public class questManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(questSet s in activeSideQuest)
+        //foreach(questSet s in activeSideQuest)
+        //{
+        //    if (s.checkQuest())
+        //    {
+        //        activeSideQuest.Remove(s);
+        //    }
+        //    break;
+        //}
+        if (focusedSideQuest != null)
         {
-            s.checkQuest();
+            if (focusedSideQuest.checkQuest())
+            {
+                activeSideQuest.Remove(focusedSideQuest);
+            }
+        }
+        if(activeMainQuest != null)
+        {
+            if (activeMainQuest.checkQuest())
+            {
+                questIndex++;
+                activeMainQuest = inactiveMainQuest[questIndex];
+            }
         }
     }
 }
@@ -71,17 +91,29 @@ public class quest
     {
         return false;
     }
+    public virtual void updateQuest()
+    {
+
+    }
 }
 [System.Serializable]
 public class questSet
 {
     public List<quest> questList;
     public int questIndex = 0;
-    public void checkQuest()
+    public bool checkQuest()
     {
         if (questList[questIndex].checkQuestDone())
         {
             questIndex++;
+        }
+        if(questIndex == questList.Count)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
@@ -111,5 +143,13 @@ public class placeQuest:quest
         }
         //return base.checkQuestDone();
 
+    }
+}
+public class NPCQuest : quest
+{
+    public override bool checkQuestDone()
+    {
+        //return base.checkQuestDone();
+        return false;
     }
 }
