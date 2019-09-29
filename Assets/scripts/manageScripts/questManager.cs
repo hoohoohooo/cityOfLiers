@@ -10,9 +10,12 @@ public class questManager : MonoBehaviour
 
     public List<questSet> activeSideQuest;
     public questSet activeMainQuest;
-
-    public quest focusedQuest = null;
     public questSet focusedSideQuest = null;
+
+    //public quest focusedQuest = null;
+
+
+    
 
     public int questIndex = 0;
 
@@ -28,12 +31,25 @@ public class questManager : MonoBehaviour
         }
         onlyForDebug();
     }
-
+    public Transform testTransform;
     void onlyForDebug()
     {
-        focusedQuest = new quest();
-        focusedQuest.objType = quest.objectiveType.place;
-        focusedQuest.destination = new Vector3(10, 0, 10);
+        //focusedQuest = new quest();
+        //focusedQuest.objType = quest.objectiveType.place;
+        //focusedQuest.destination = new Vector3(10, 0, 10);
+
+        placeQuest tmpQuest = new placeQuest(new Vector3(10, 0, 10));
+        NPCQuest tmpQuest_0 = new NPCQuest(testTransform);
+
+        activeMainQuest = new questSet();
+        //activeMainQuest.questList = new List<quest>();
+        activeMainQuest.questList.Add(tmpQuest);
+        activeMainQuest.questList.Add(tmpQuest_0);
+
+        questSet tmpMainQuest = new questSet();
+        placeQuest tmpQuest_1 = new placeQuest(new Vector3(1, 0, 1));
+        tmpMainQuest.questList.Add(tmpQuest_1);
+        inactiveMainQuest.Add(tmpMainQuest);
     }
 
 
@@ -54,19 +70,33 @@ public class questManager : MonoBehaviour
         //    }
         //    break;
         //}
-        if (focusedSideQuest != null)
+        
+        if (focusedSideQuest.questList.Count != 0)
         {
             if (focusedSideQuest.checkQuest())
             {
                 activeSideQuest.Remove(focusedSideQuest);
             }
         }
-        if(activeMainQuest != null)
+        if(activeMainQuest == null)
         {
+            return;
+        }
+        if(activeMainQuest.questList.Count !=0)
+        {
+            activeMainQuest.questList[activeMainQuest.questIndex].updateQuest();
             if (activeMainQuest.checkQuest())
             {
                 questIndex++;
-                activeMainQuest = inactiveMainQuest[questIndex];
+                if (inactiveMainQuest.Count > 0)
+                {
+                    activeMainQuest = inactiveMainQuest[questIndex-1];
+                    inactiveMainQuest.Remove(activeMainQuest);
+                }
+                else
+                {
+                    activeMainQuest = null;
+                }
             }
         }
     }
@@ -101,6 +131,10 @@ public class questSet
 {
     public List<quest> questList;
     public int questIndex = 0;
+    public questSet()
+    {
+        questList = new List<quest>();
+    }
     public bool checkQuest()
     {
         if (questList[questIndex].checkQuestDone())
@@ -142,14 +176,28 @@ public class placeQuest:quest
             return false;
         }
         //return base.checkQuestDone();
-
     }
+    
 }
 public class NPCQuest : quest
 {
+    public NPCQuest(Transform trn)
+    {
+        objType = objectiveType.npc;
+        objectiveNPC = trn;
+    }
     public override bool checkQuestDone()
     {
         //return base.checkQuestDone();
+        if(gameMng.instance.plCont.hitOutput == objectiveNPC)
+        {
+            return true;
+        }
         return false;
+    }
+    public override void updateQuest()
+    {
+        //base.updateQuest();
+        destination = objectiveNPC.position;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class playerCont : MonoBehaviour
 {
+    public Camera cam;
     enum status
     {
         idle, crouch, walk, run, attack,
@@ -114,11 +115,26 @@ public class playerCont : MonoBehaviour
             curCamState = camState.mid;
             StartCoroutine(camAnim(camPivot.localPosition, midCamPos));
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            hitOutput = rayFromCamera();
+        }
     }
 
-    public void rayFromCamera()
+    Ray ray;
+    RaycastHit hit;
+    Vector3 dir;
+    public Transform hitOutput = null;
+    public Transform rayFromCamera()
     {
-        
+        dir = cam.transform.forward;
+        ray = new Ray(cam.transform.position, dir);
+        if(Physics.Raycast(cam.transform.position,dir,out hit))
+        {
+            print(hit.transform.name);
+            return hit.transform;
+        }
+        return null;
     }
 
     void onDebugOnly()
@@ -134,6 +150,7 @@ public class playerCont : MonoBehaviour
     {
         //data = GetComponent<playerData>();
         onDebugOnly();
+        cam = camPivot.GetChild(0).GetComponent<Camera>();
     }
     // Start is called before the first frame update
     void Start()

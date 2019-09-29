@@ -35,26 +35,31 @@ public class cursorScript : MonoBehaviour
     float sz;
     public void placeMainCursor()
     {
-        dir = questManager.instance.focusedQuest.destination - gameMng.instance.player.position;
+        //dir = questManager.instance.focusedQuest.destination - gameMng.instance.player.position;
+        dir = questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].destination - gameMng.instance.player.position;
         if (Vector3.Dot(cam.transform.forward, dir) < 0)
         {
             pointOrigin = new Vector3(-100, -1000, 0);
         }
         else
         {
-            pointOrigin = cam.WorldToScreenPoint(questManager.instance.focusedQuest.destination);
+            pointOrigin = cam.WorldToScreenPoint(questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].destination);
         }
-        if (questManager.instance.focusedQuest.objType == quest.objectiveType.place)
+        if (questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].objType == quest.objectiveType.place)
         {
-            sz = lineAmountScaler / (Vector3.Distance(questManager.instance.focusedQuest.destination, gameMng.instance.player.position) / 2);
+            sz = lineAmountScaler / (Vector3.Distance(questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].destination, gameMng.instance.player.position) / 2);
             if (sz > 200)
             {
                 sz = 200;
             }
             pointOrigin.y += sz;
-        }else if(questManager.instance.focusedQuest.objType == quest.objectiveType.npc)
+        }else if(questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].objType == quest.objectiveType.npc)
         {
-            sz = lineAmountScaler / (Vector3.Distance(questManager.instance.focusedQuest.objectiveNPC.position, gameMng.instance.player.position) / 2);
+            sz = lineAmountScaler / (Vector3.Distance(questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].objectiveNPC.position, gameMng.instance.player.position) / 2);
+            if (sz > 200)
+            {
+                sz = 200;
+            }
             pointOrigin.y += sz;
         }
         MainCursor.position = pointOrigin;
@@ -90,15 +95,29 @@ public class cursorScript : MonoBehaviour
         //mousePos = Input.mousePosition;
         //if (Input.GetKeyDown(KeyCode.Space))
         //    startVertex = new Vector3(mousePos.x / Screen.width, mousePos.y / Screen.height, 0);
-        if(questManager.instance.focusedQuest != null)
+        //if(questManager.instance.focusedQuest != null)
+        //{
+        //    placeMainCursor();
+        //}
+        //else
+        //{
+        //    printer.getRequest(false, mat, questCursor);
+        //}
+        if (questManager.instance.activeMainQuest != null)
         {
-            placeMainCursor();
+            if (questManager.instance.activeMainQuest.questList.Count > 0)
+            {
+                placeMainCursor();
+            }
+            else
+            {
+                MainCursor.position = new Vector3(-100, -1000, 0);
+            }
         }
         else
         {
-            printer.getRequest(false, mat, questCursor);
+            MainCursor.position = new Vector3(-100, -1000, 0);
         }
-
     }
 
 

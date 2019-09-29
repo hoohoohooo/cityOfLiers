@@ -29,29 +29,32 @@ public class printCursorElement : MonoBehaviour
     bool request = false;
     private void OnPostRender()
     {
-        if (questManager.instance.focusedQuest != null)
+        if (questManager.instance.activeMainQuest != null)
         {
-            if (request == true)
+            if (questManager.instance.activeMainQuest.questList.Count > 0)
             {
-                //print();
-                GL.PushMatrix();
-                mat.SetPass(0);
-                GL.LoadOrtho();
-
-                for (int i = 0; i < 4; i++)
+                if (request == true)
                 {
-                    printLine(col.square[i]);
+                    //print();
+                    GL.PushMatrix();
+                    mat.SetPass(0);
+                    GL.LoadOrtho();
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        printLine(col.square[i]);
+                    }
+                    //printLine(col.lineToPoint);
+                    GL.Begin(GL.LINES);
+                    GL.Color(Color.red);
+                    GL.Vertex(col.lineToPoint.start);
+                    //GL.Vertex(new Vector3(0.5f, 0.5f, 0));
+                    GL.Color(Color.clear);
+                    GL.Vertex(col.lineToPoint.end);
+                    //GL.Vertex(new Vector3(1, 1, 0));
+                    GL.End();
+                    GL.PopMatrix();
                 }
-                //printLine(col.lineToPoint);
-                GL.Begin(GL.LINES);
-                GL.Color(Color.red);
-                GL.Vertex(col.lineToPoint.start);
-                //GL.Vertex(new Vector3(0.5f, 0.5f, 0));
-                GL.Color(Color.clear);
-                GL.Vertex(col.lineToPoint.end);
-                //GL.Vertex(new Vector3(1, 1, 0));
-                GL.End();
-                GL.PopMatrix();
             }
         }
     }
