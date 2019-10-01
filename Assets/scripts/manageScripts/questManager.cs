@@ -90,7 +90,7 @@ public class questManager : MonoBehaviour
                 questIndex++;
                 if (inactiveMainQuest.Count > 0)
                 {
-                    activeMainQuest = inactiveMainQuest[questIndex-1];
+                    activeMainQuest = inactiveMainQuest[0];
                     inactiveMainQuest.Remove(activeMainQuest);
                 }
                 else
@@ -200,4 +200,8 @@ public class NPCQuest : quest
         //base.updateQuest();
         destination = objectiveNPC.position;
     }
+}
+public class itemQuest : quest
+{
+    
 }

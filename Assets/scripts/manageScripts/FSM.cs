@@ -338,7 +338,6 @@ public class chaseState : states
 
 public class searchState : states
 {
-    
     //bool turn = false;
     float plTrackTimer = 0;
     float trackTime = 0.5f;
