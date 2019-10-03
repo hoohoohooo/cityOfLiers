@@ -6,6 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(questSet))]
 public class questSedEditor : Editor
 {
+
     questSet code;
     enum EditorMode
     {
@@ -15,6 +16,7 @@ public class questSedEditor : Editor
     private void OnEnable()
     {
         code = target as questSet;
+        
     }
 
     private void OnSceneGUI()
@@ -27,6 +29,12 @@ public class questSedEditor : Editor
             mouseInput();
         }
     }
+
+    //public override void OnInspectorGUI()
+    //{
+    //    //base.OnInspectorGUI();
+
+    //}
 
     void draw()
     {
