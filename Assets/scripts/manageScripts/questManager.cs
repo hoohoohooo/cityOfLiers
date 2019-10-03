@@ -70,12 +70,15 @@ public class questManager : MonoBehaviour
         //    }
         //    break;
         //}
-        
-        if (focusedSideQuest.questList.Count != 0)
+
+        if (focusedSideQuest != null)
         {
-            if (focusedSideQuest.checkQuest())
+            if (focusedSideQuest.questList.Count != 0)
             {
-                activeSideQuest.Remove(focusedSideQuest);
+                if (focusedSideQuest.checkQuest())
+                {
+                    activeSideQuest.Remove(focusedSideQuest);
+                }
             }
         }
         if(activeMainQuest == null)
