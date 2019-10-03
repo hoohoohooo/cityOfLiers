@@ -126,8 +126,9 @@ public class quest
 
     }
 }
-[System.Serializable]
-public class questSet
+//[System.Serializable]
+[CreateAssetMenu()]
+public class questSet : ScriptableObject
 {
     public List<quest> questList;
     public int questIndex = 0;
@@ -155,7 +156,6 @@ public class questEvent
 {
 
 }
-
 public class placeQuest:quest
 {
     float destDist = 2;

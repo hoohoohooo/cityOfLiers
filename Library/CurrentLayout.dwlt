@@ -368,7 +368,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 137
+  controlID: 161
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -843,19 +843,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/scripts/manageScripts
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/scripts/manageScripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\assesment_unity1\cityOfThievesAndLiers\cityOfLiers
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 57}
-    m_SelectedIDs: b23b0000
-    m_LastClickedID: 15282
+    m_SelectedIDs: 942c0000
+    m_LastClickedID: 11412
     m_ExpandedIDs: 00000000942c0000d42d0000722f000078310000503300005c3400001e350000ca370000223800003a3a0000c43a0000403d0000e23e0000ec480000ee480000f0480000f2480000f4480000f6480000f848000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1004,9 +1004,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 66410000
-      m_LastClickedID: 16742
-      m_ExpandedIDs: 8efbffff60410000
+      m_SelectedIDs: fee9ffff
+      m_LastClickedID: 0
+      m_ExpandedIDs: 8efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
