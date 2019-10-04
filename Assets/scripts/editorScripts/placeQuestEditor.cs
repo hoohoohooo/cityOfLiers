@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(questSet))]
-public class questSedEditor : Editor
+[CustomEditor(typeof(placeQuest))]
+public class placeQuestEditor : Editor
 {
-
-    questSet code;
+    placeQuest code;
     enum EditorMode
     {
         off, on
@@ -15,8 +14,20 @@ public class questSedEditor : Editor
     EditorMode mode;
     private void OnEnable()
     {
-        code = target as questSet;
-        
+        code = target as placeQuest;
+        SceneView.duringSceneGui += SceneView_duringSceneGui;
+    }
+
+
+    private void SceneView_duringSceneGui(SceneView obj)
+    {
+        //throw new System.NotImplementedException();
+        OnSceneGUI();
+    }
+
+    private void OnDisable()
+    {
+        SceneView.duringSceneGui -= SceneView_duringSceneGui;
     }
 
     private void OnSceneGUI()
@@ -29,6 +40,8 @@ public class questSedEditor : Editor
             mouseInput();
         }
     }
+
+
 
     //public override void OnInspectorGUI()
     //{
@@ -76,8 +89,8 @@ public class questSedEditor : Editor
             {
                 //code.agentList
                 //code.destinationPoints.Add(hit.point);
+                code.destination = hit.point;
             }
         }
     }
-
 }

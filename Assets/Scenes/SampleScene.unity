@@ -1693,7 +1693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037777643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -23.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1256597971}
@@ -2508,12 +2508,8 @@ MonoBehaviour:
   inactiveSideQuest: []
   inactiveMainQuest: []
   activeSideQuest: []
-  activeMainQuest:
-    questList: []
-    questIndex: 0
-  focusedSideQuest:
-    questList: []
-    questIndex: 0
+  activeMainQuest: {fileID: 0}
+  focusedSideQuest: {fileID: 0}
   questIndex: 0
   testTransform: {fileID: 102628596}
 --- !u!1001 &1460984950
@@ -2609,10 +2605,10 @@ MonoBehaviour:
     curStateType: 0
     nType: 0
   destinationPoints:
-  - {x: 22.774485, y: -9.938056e-17, z: 22.378513}
-  - {x: -22.43472, y: 1.0069107e-16, z: -22.67361}
-  - {x: -21.902023, y: -9.616831e-17, z: 21.65518}
-  - {x: 22.870247, y: 1.03318194e-16, z: -23.26519}
+  - {x: -20.91803, y: 9.616236e-17, z: -21.65384}
+  - {x: -22.05121, y: -1.0077678e-16, z: 22.692913}
+  - {x: 22.348213, y: -1.0347904e-16, z: 23.301409}
+  - {x: 22.43843, y: 9.661546e-17, z: -21.755867}
   curStateType: 0
   shareDestinationPoints: 0
   type: 1

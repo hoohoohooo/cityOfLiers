@@ -9,7 +9,7 @@ public class questManager : MonoBehaviour
     public List<questSet> inactiveMainQuest;
 
     public List<questSet> activeSideQuest;
-    public questSet activeMainQuest;
+    public questSet activeMainQuest = null;
     public questSet focusedSideQuest = null;
 
     //public quest focusedQuest = null;
@@ -29,7 +29,7 @@ public class questManager : MonoBehaviour
         {
             Destroy(this);
         }
-        onlyForDebug();
+        //onlyForDebug();
     }
     public Transform testTransform;
     void onlyForDebug()
@@ -79,10 +79,16 @@ public class questManager : MonoBehaviour
                 {
                     activeSideQuest.Remove(focusedSideQuest);
                 }
+                focusedSideQuest = activeSideQuest[0];
             }
         }
         if(activeMainQuest == null)
         {
+            if (inactiveMainQuest.Count > 0)
+            {
+                activeMainQuest = inactiveMainQuest[0];
+                inactiveMainQuest.Remove(activeMainQuest);
+            }
             return;
         }
         if(activeMainQuest.questList.Count !=0)
@@ -105,7 +111,7 @@ public class questManager : MonoBehaviour
     }
 }
 [System.Serializable]
-public class quest
+public class quest : ScriptableObject
 {
     public enum objectiveType
     {
@@ -128,6 +134,7 @@ public class quest
     {
 
     }
+    
 }
 //[System.Serializable]
 
@@ -135,51 +142,8 @@ public class questEvent
 {
 
 }
-public class placeQuest:quest
-{
-    float destDist = 2;
-    public placeQuest(Vector3 dest)
-    {
-        objType = objectiveType.place;
-        destination = dest;
-        player = gameMng.instance.player;
-    }
-    public override bool checkQuestDone()
-    {
-        if (Vector3.Distance(destination, player.position) < destDist)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        //return base.checkQuestDone();
-    }
-    
-}
-public class NPCQuest : quest
-{
-    public NPCQuest(Transform trn)
-    {
-        objType = objectiveType.npc;
-        objectiveNPC = trn;
-    }
-    public override bool checkQuestDone()
-    {
-        //return base.checkQuestDone();
-        if(gameMng.instance.plCont.hitOutput == objectiveNPC)
-        {
-            return true;
-        }
-        return false;
-    }
-    public override void updateQuest()
-    {
-        //base.updateQuest();
-        destination = objectiveNPC.position;
-    }
-}
+
+
 public class itemQuest : quest
 {
     
