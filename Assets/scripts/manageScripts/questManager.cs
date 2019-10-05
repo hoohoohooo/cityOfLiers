@@ -86,15 +86,6 @@ public class questManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //foreach(questSet s in activeSideQuest)
-        //{
-        //    if (s.checkQuest())
-        //    {
-        //        activeSideQuest.Remove(s);
-        //    }
-        //    break;
-        //}
-
         if (focusedSideQuest != null)
         {
             if (focusedSideQuest.questList.Count != 0)
