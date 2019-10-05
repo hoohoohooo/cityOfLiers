@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class questManager : MonoBehaviour
 {
@@ -12,9 +14,11 @@ public class questManager : MonoBehaviour
     public questSet activeMainQuest = null;
     public questSet focusedSideQuest = null;
 
+    public List<Transform> mainQuestObjectiveNPC;
+
     //public quest focusedQuest = null;
 
-
+    
     
 
     public int questIndex = 0;
@@ -29,8 +33,28 @@ public class questManager : MonoBehaviour
         {
             Destroy(this);
         }
-        //onlyForDebug();
+        onlyForDebug();
+        initializeAllQuest();
     }
+
+    void initializeAllQuest()
+    {
+        int questNpcIndex = 0;
+        foreach(questSet qs in inactiveMainQuest)
+        {
+            foreach(quest q in qs.questList)
+            {
+                q.player = gameMng.instance.player;
+                if(q.objType == quest.objectiveType.npc)
+                {
+                    q.objectiveNPC = mainQuestObjectiveNPC[questNpcIndex];
+                    questNpcIndex++;
+                }
+            }
+            qs.questIndex = 0;
+        }
+    }
+
     public Transform testTransform;
     void onlyForDebug()
     {
@@ -41,10 +65,10 @@ public class questManager : MonoBehaviour
         placeQuest tmpQuest = new placeQuest(new Vector3(10, 0, 10));
         NPCQuest tmpQuest_0 = new NPCQuest(testTransform);
 
-        activeMainQuest = new questSet();
-        //activeMainQuest.questList = new List<quest>();
-        activeMainQuest.questList.Add(tmpQuest);
-        activeMainQuest.questList.Add(tmpQuest_0);
+        //activeMainQuest = new questSet();
+        ////activeMainQuest.questList = new List<quest>();
+        //activeMainQuest.questList.Add(tmpQuest);
+        //activeMainQuest.questList.Add(tmpQuest_0);
 
         questSet tmpMainQuest = new questSet();
         placeQuest tmpQuest_1 = new placeQuest(new Vector3(1, 0, 1));
@@ -126,6 +150,7 @@ public class quest : ScriptableObject
     public itemBase questItem = null;
     public Transform player;
     public bool questDone;
+    public questEvent afterEvent;
     public virtual bool checkQuestDone()
     {
         return false;
@@ -136,15 +161,14 @@ public class quest : ScriptableObject
     }
     
 }
-//[System.Serializable]
-
-public class questEvent
-{
-
-}
-
 
 public class itemQuest : quest
 {
-    
+    public override bool checkQuestDone()
+    {
+
+        //return base.checkQuestDone();
+        gameMng.instance.coroutineStarter(qEvent.qEvent());
+        return false;
+    }
 }

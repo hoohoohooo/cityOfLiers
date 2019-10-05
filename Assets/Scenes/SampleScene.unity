@@ -2506,10 +2506,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inactiveSideQuest: []
-  inactiveMainQuest: []
+  inactiveMainQuest:
+  - {fileID: 11400000, guid: 93be01a351865864686fe0f7a6f8f2ab, type: 2}
   activeSideQuest: []
   activeMainQuest: {fileID: 0}
   focusedSideQuest: {fileID: 0}
+  mainQuestObjectiveNPC:
+  - {fileID: 102628596}
+  - {fileID: 102628596}
   questIndex: 0
   testTransform: {fileID: 102628596}
 --- !u!1001 &1460984950

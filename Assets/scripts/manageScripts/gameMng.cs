@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class gameMng : MonoBehaviour
 {
+    public delegate void fP();
+
     public static gameMng instance = null;
     public Transform player;
     public playerCont plCont;
@@ -23,6 +25,12 @@ public class gameMng : MonoBehaviour
             Destroy(this);
         }
     }
+    
+    public void coroutineStarter(IEnumerator corout)
+    {
+        StartCoroutine(corout);
+    }
+
     // Update is called once per frame
     void Update()
     {

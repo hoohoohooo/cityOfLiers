@@ -29,7 +29,7 @@ public class placeQuestEditor : Editor
     {
         SceneView.duringSceneGui -= SceneView_duringSceneGui;
     }
-
+    Vector3 cubeSize = new Vector3(0.5f, 0.5f, 0.5f);
     private void OnSceneGUI()
     {
         int controlID = GUIUtility.GetControlID(FocusType.Passive);
@@ -39,6 +39,8 @@ public class placeQuestEditor : Editor
         {
             mouseInput();
         }
+        Handles.color = Color.magenta;
+        Handles.DrawWireCube(code.destination, cubeSize);
     }
 
 
@@ -57,12 +59,9 @@ public class placeQuestEditor : Editor
                                                                 EditorGUILayout.BeginVertical();
 
                                                                 mode = (EditorMode)GUILayout.SelectionGrid((int)mode, new string[] { "off", "on" }, 1);
-                                                                if (GUILayout.Button("clear all destination"))
-                                                                {
-                                                                    //code.destinationPoints.Clear();
-                                                                }
+                                                                
                                                                 GUI.color = Color.white;
-
+                                                                //code.objectiveNPC = (Transform)EditorGUILayout.ObjectField(code.objectiveNPC, typeof(Transform), true);
                                                                 EditorGUILayout.EndVertical();
                                                             }
                             , "Mode");

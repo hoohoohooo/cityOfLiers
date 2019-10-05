@@ -97,6 +97,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+    <Compile Include="Assets\scripts\dataScripts\dialoguePool.cs" />
     <Compile Include="Assets\scripts\dataScripts\itemBase.cs" />
     <Compile Include="Assets\scripts\dataScripts\npcData.cs" />
     <Compile Include="Assets\scripts\editorScripts\fsmEditor.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets\scripts\manageScripts\questManager.cs" />
     <Compile Include="Assets\scripts\manageScripts\questSetScripts\NPCQuest.cs" />
     <Compile Include="Assets\scripts\manageScripts\questSetScripts\placeQuest.cs" />
+    <Compile Include="Assets\scripts\manageScripts\questSetScripts\questEvent.cs" />
     <Compile Include="Assets\scripts\manageScripts\questSetScripts\questSet.cs" />
     <Compile Include="Assets\scripts\manageScripts\uiManager.cs" />
     <Compile Include="Assets\scripts\npcCont.cs" />

@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu()]
 [System.Serializable]
 public class placeQuest : quest
 {
-    float destDist = 2;
+    const float destDist = 2;
     public placeQuest(Vector3 dest)
     {
         objType = objectiveType.place;
@@ -15,8 +16,13 @@ public class placeQuest : quest
     }
     public override bool checkQuestDone()
     {
+        Debug.Log(Vector3.Distance(destination, player.position));
         if (Vector3.Distance(destination, player.position) < destDist)
         {
+            //if (qEvent != null)
+            //{
+            //    gameMng.instance.coroutineStarter(qEvent.qEvent());
+            //}
             return true;
         }
         else

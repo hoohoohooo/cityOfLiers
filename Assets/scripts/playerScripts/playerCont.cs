@@ -115,7 +115,7 @@ public class playerCont : MonoBehaviour
             curCamState = camState.mid;
             StartCoroutine(camAnim(camPivot.localPosition, midCamPos));
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             hitOutput = rayFromCamera();
         }
