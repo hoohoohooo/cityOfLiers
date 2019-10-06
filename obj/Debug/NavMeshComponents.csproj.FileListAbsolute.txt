@@ -813,4 +813,3 @@ D:\unityProjects\cityOfLiersGit\cityOfLiers\obj\Debug\NavMeshComponents.csproj.C
 D:\unityProjects\cityOfLiersGit\cityOfLiers\obj\Debug\NavMeshComponents.csproj.CopyComplete
 D:\unityProjects\cityOfLiersGit\cityOfLiers\obj\Debug\NavMeshComponents.dll
 D:\unityProjects\cityOfLiersGit\cityOfLiers\obj\Debug\NavMeshComponents.pdb
-F:\assesment_unity1\cityOfThievesAndLiers\cityOfLiers\Temp\bin\Debug\Boo.Lang.dll

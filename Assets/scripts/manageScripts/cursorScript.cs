@@ -55,7 +55,7 @@ public class cursorScript : MonoBehaviour
             pointOrigin.y += sz;
         }else if(questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].objType == quest.objectiveType.npc)
         {
-            sz = lineAmountScaler / (Vector3.Distance(questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].objectiveNPC.position, gameMng.instance.player.position) / 2);
+            sz = lineAmountScaler / (Vector3.Distance(questManager.instance.activeMainQuest.questList[questManager.instance.activeMainQuest.questIndex].objectiveNPC.transform.position, gameMng.instance.player.position) / 2);
             if (sz > 200)
             {
                 sz = 200;

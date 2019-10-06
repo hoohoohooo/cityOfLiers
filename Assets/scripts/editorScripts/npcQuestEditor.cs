@@ -23,6 +23,11 @@ public class npcQuestEditor : Editor
     {
         //throw new System.NotImplementedException();
         OnSceneGUI();
+        if(code.objectiveNPC == null)
+        {
+            return;
+        }
+        code.questNPCIndex = code.objectiveNPC.GetInstanceID();
     }
 
     private void OnDisable()
@@ -60,11 +65,13 @@ public class npcQuestEditor : Editor
 
                                                                 //mode = (EditorMode)GUILayout.SelectionGrid((int)mode, new string[] { "off", "on" }, 1);
                                                                 GUI.color = Color.white;
-                                                                code.objectiveNPC = (Transform)EditorGUILayout.ObjectField(code.objectiveNPC, typeof(Transform), true);
+                                                                code.objectiveNPC = (GameObject)EditorGUILayout.ObjectField(code.objectiveNPC, typeof(GameObject), true);
+                                                                //code.questNPCIndex = EditorGUILayout.ObjectField(code.objectiveNPC, typeof(GameObject), true).GetInstanceID();
                                                                 EditorGUILayout.EndVertical();
                                                             }
                             , "Mode");
     }
+    
     void mouseInput()
     {
         Event e = Event.current;

@@ -27,6 +27,7 @@ public class placeQuestEditor : Editor
 
     private void OnDisable()
     {
+        mode = EditorMode.off;
         SceneView.duringSceneGui -= SceneView_duringSceneGui;
     }
     Vector3 cubeSize = new Vector3(0.5f, 0.5f, 0.5f);
@@ -40,7 +41,7 @@ public class placeQuestEditor : Editor
             mouseInput();
         }
         Handles.color = Color.magenta;
-        Handles.DrawWireCube(code.destination, cubeSize);
+        Handles.DrawWireCube(new Vector3(code.x,code.y,code.z), cubeSize);
     }
 
 
@@ -78,6 +79,7 @@ public class placeQuestEditor : Editor
             }
         }
     }
+    //Vector3 hitVec = Vector3.zero;
     void rayToScreen(Vector2 input)
     {
         Ray ray = HandleUtility.GUIPointToWorldRay(input);
@@ -86,9 +88,9 @@ public class placeQuestEditor : Editor
         {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                //code.agentList
-                //code.destinationPoints.Add(hit.point);
-                code.destination = hit.point;
+                code.x = hit.point.x;
+                code.y = hit.point.y;
+                code.z = hit.point.z;
             }
         }
     }

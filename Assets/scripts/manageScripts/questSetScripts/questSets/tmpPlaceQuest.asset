@@ -15,9 +15,14 @@ MonoBehaviour:
   objType: 0
   destination: {x: 0, y: 0, z: 0}
   objectiveNPC: {fileID: 0}
+  qEvent: {fileID: 0}
   questItem:
     itemName: 
     maxQuantity: 0
     count: 0
   player: {fileID: 0}
   questDone: 0
+  afterEvent: {fileID: 0}
+  x: 0
+  y: 0
+  z: 0

@@ -12,7 +12,7 @@ public class npcCont : MonoBehaviour
     bool shareDestinationPoints = false;
     [SerializeField]
     npcAgents.npcType type;
-
+    public int instanceID;
     float npcSpeed = 1;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,7 @@ public class npcCont : MonoBehaviour
         agent.curState = new moveToState(agent, gameMng.instance.player);
         agent.nType = type;
         FSM.instance.agentList.Add(agent);
+        instanceID = transform.GetInstanceID();
     }
 
     // Update is called once per frame

@@ -33,9 +33,28 @@ public class questManager : MonoBehaviour
         {
             Destroy(this);
         }
-        onlyForDebug();
+        
+        //onlyForDebug();
         initializeAllQuest();
     }
+    //private void OnEnable()
+    //{
+    //    if(instance == null)
+    //    {
+    //        instance = this;
+    //    }
+    //    else
+    //    {
+    //        if (instance == this)
+    //        {
+    //            return;
+    //        }
+    //        else
+    //        {
+    //            Destroy(this);
+    //        }
+    //    }
+    //}
 
     void initializeAllQuest()
     {
@@ -45,10 +64,17 @@ public class questManager : MonoBehaviour
             foreach(quest q in qs.questList)
             {
                 q.player = gameMng.instance.player;
-                if(q.objType == quest.objectiveType.npc)
+                if (q.objType == quest.objectiveType.place)
                 {
-                    q.objectiveNPC = mainQuestObjectiveNPC[questNpcIndex];
-                    questNpcIndex++;
+                    q.destination.x = ((placeQuest)q).x;
+                    q.destination.y = ((placeQuest)q).y;
+                    q.destination.z = ((placeQuest)q).z;
+                }
+                if (q.objType == quest.objectiveType.npc)
+                {
+                    //q.objectiveNPC = mainQuestObjectiveNPC[questNpcIndex];
+                    //questNpcIndex++;
+                    q.objectiveNPC = (GameObject)UnityEditor.EditorUtility.InstanceIDToObject(((NPCQuest)q).questNPCIndex);
                 }
             }
             qs.questIndex = 0;
@@ -63,7 +89,7 @@ public class questManager : MonoBehaviour
         //focusedQuest.destination = new Vector3(10, 0, 10);
 
         placeQuest tmpQuest = new placeQuest(new Vector3(10, 0, 10));
-        NPCQuest tmpQuest_0 = new NPCQuest(testTransform);
+        NPCQuest tmpQuest_0 = new NPCQuest(testTransform.gameObject);
 
         //activeMainQuest = new questSet();
         ////activeMainQuest.questList = new List<quest>();
@@ -136,7 +162,7 @@ public class quest : ScriptableObject
     }
     public objectiveType objType;
     public Vector3 destination;
-    public Transform objectiveNPC = null;
+    public GameObject objectiveNPC = null;
     public questEvent qEvent = null;
     public itemBase questItem = null;
     public Transform player;

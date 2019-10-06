@@ -7,6 +7,10 @@ using UnityEditor;
 [System.Serializable]
 public class placeQuest : quest
 {
+    [Header("whyNoWorking")]
+    public float x;
+    public float y;
+    public float z;
     const float destDist = 2;
     public placeQuest(Vector3 dest)
     {

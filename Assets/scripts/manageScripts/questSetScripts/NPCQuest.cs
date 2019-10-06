@@ -6,7 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class NPCQuest : quest
 {
-    public NPCQuest(Transform trn)
+    public int questNPCIndex;
+    public NPCQuest(GameObject trn)
     {
         objType = objectiveType.npc;
         objectiveNPC = trn;
@@ -14,7 +15,7 @@ public class NPCQuest : quest
     public override bool checkQuestDone()
     {
         //return base.checkQuestDone();
-        if (gameMng.instance.plCont.hitOutput == objectiveNPC)
+        if (gameMng.instance.plCont.hitOutput == objectiveNPC.transform)
         {
             return true;
         }
@@ -23,6 +24,6 @@ public class NPCQuest : quest
     public override void updateQuest()
     {
         //base.updateQuest();
-        destination = objectiveNPC.position;
+        destination = objectiveNPC.transform.position;
     }
 }
