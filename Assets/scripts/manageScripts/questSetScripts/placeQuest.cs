@@ -7,7 +7,6 @@ using UnityEditor;
 [System.Serializable]
 public class placeQuest : quest
 {
-    [Header("whyNoWorking")]
     public float x;
     public float y;
     public float z;
@@ -20,7 +19,6 @@ public class placeQuest : quest
     }
     public override bool checkQuestDone()
     {
-        Debug.Log(Vector3.Distance(destination, player.position));
         if (Vector3.Distance(destination, player.position) < destDist)
         {
             //if (qEvent != null)

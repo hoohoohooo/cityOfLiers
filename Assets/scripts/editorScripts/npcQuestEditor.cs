@@ -33,6 +33,7 @@ public class npcQuestEditor : Editor
     private void OnDisable()
     {
         SceneView.duringSceneGui -= SceneView_duringSceneGui;
+        EditorUtility.SetDirty(code);
     }
     Vector3 cubeSize = new Vector3(0.5f, 0.5f, 0.5f);
     private void OnSceneGUI()

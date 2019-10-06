@@ -29,6 +29,7 @@ public class placeQuestEditor : Editor
     {
         mode = EditorMode.off;
         SceneView.duringSceneGui -= SceneView_duringSceneGui;
+        EditorUtility.SetDirty(code);
     }
     Vector3 cubeSize = new Vector3(0.5f, 0.5f, 0.5f);
     private void OnSceneGUI()

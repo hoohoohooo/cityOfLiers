@@ -31,9 +31,8 @@ public class npcCont : MonoBehaviour
         agent.curState = new moveToState(agent, gameMng.instance.player);
         agent.nType = type;
         FSM.instance.agentList.Add(agent);
-        instanceID = transform.GetInstanceID();
+        instanceID = gameObject.GetInstanceID();
     }
-
     // Update is called once per frame
     void Update()
     {

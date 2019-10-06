@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tmpPlaceQuest0
   m_EditorClassIdentifier: 
   objType: 0
-  destination: {x: 0, y: 0, z: 0}
+  destination: {x: 5.985722, y: 5.127131e-17, z: -11.545272}
   objectiveNPC: {fileID: 0}
   qEvent: {fileID: 0}
   questItem:
@@ -23,6 +23,6 @@ MonoBehaviour:
   player: {fileID: 0}
   questDone: 0
   afterEvent: {fileID: 0}
-  x: 0
-  y: 0
-  z: 0
+  x: 5.985722
+  y: 5.127131e-17
+  z: -11.545272
