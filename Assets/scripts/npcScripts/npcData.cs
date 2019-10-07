@@ -7,13 +7,9 @@ using UnityEditor;
 public class npcData : MonoBehaviour
 {
     // Start is called before the first frame update
-    static int idCount = 0;
-    public int uniqueId;
-    public npcData()
-    {
-        uniqueId = idCount;
-        idCount++;        
-    }
+    public npcManager manager;
+    public int uniqueId = 0;
+    
     void Start()
     {
         if (EditorApplication.isPlaying)
@@ -23,6 +19,13 @@ public class npcData : MonoBehaviour
         else
         {
             print("startHappened");
+            if(uniqueId == 0)
+            {
+                EditorUtility.SetDirty(manager);
+                EditorUtility.SetDirty(this);
+                manager.npcCount++;
+                uniqueId = manager.npcCount;
+            }
         }
     }
     private void OnDestroy()

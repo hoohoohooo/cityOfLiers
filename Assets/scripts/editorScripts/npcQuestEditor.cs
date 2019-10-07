@@ -66,7 +66,12 @@ public class npcQuestEditor : Editor
 
                                                                 //mode = (EditorMode)GUILayout.SelectionGrid((int)mode, new string[] { "off", "on" }, 1);
                                                                 GUI.color = Color.white;
+                                                                
                                                                 code.objectiveNPC = (GameObject)EditorGUILayout.ObjectField(code.objectiveNPC, typeof(GameObject), true);
+                                                                if (code.objectiveNPC != null)
+                                                                {
+                                                                    code.questNPCIndex = code.objectiveNPC.GetComponent<npcData>().uniqueId;
+                                                                }
                                                                 //code.questNPCIndex = EditorGUILayout.ObjectField(code.objectiveNPC, typeof(GameObject), true).GetInstanceID();
                                                                 EditorGUILayout.EndVertical();
                                                             }

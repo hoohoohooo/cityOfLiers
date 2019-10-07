@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class npcManager : MonoBehaviour
+[CreateAssetMenu()]
+[System.Serializable]
+public class npcManager : ScriptableObject
 {
-    public List<Transform> npcTrn;
-    public static npcManager instance;
+    public int npcCount;
 }

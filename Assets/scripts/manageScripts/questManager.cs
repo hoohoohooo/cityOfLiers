@@ -35,7 +35,7 @@ public class questManager : MonoBehaviour
         }
         
         //onlyForDebug();
-        initializeAllQuest();
+        
     }
     //private void OnEnable()
     //{
@@ -58,6 +58,7 @@ public class questManager : MonoBehaviour
 
     void initializeAllQuest()
     {
+        npcData[] datas = FindObjectsOfType<npcData>();
         int questNpcIndex = 0;
         foreach(questSet qs in inactiveMainQuest)
         {
@@ -66,15 +67,22 @@ public class questManager : MonoBehaviour
                 q.player = gameMng.instance.player;
                 if (q.objType == quest.objectiveType.place)
                 {
-                    q.destination.x = ((placeQuest)q).x;
-                    q.destination.y = ((placeQuest)q).y;
-                    q.destination.z = ((placeQuest)q).z;
+                    //q.destination.x = ((placeQuest)q).x;
+                    //q.destination.y = ((placeQuest)q).y;
+                    //q.destination.z = ((placeQuest)q).z;
                 }
                 if (q.objType == quest.objectiveType.npc)
                 {
                     //q.objectiveNPC = mainQuestObjectiveNPC[questNpcIndex];
                     //questNpcIndex++;
-                    q.objectiveNPC = (GameObject)UnityEditor.EditorUtility.InstanceIDToObject(((NPCQuest)q).questNPCIndex);
+                    //q.objectiveNPC = (GameObject)UnityEditor.EditorUtility.InstanceIDToObject(((NPCQuest)q).questNPCIndex);
+                    foreach(npcData n in datas)
+                    {
+                        if(n.uniqueId == ((NPCQuest)q).questNPCIndex)
+                        {
+                            q.objectiveNPC = n.gameObject;
+                        }
+                    }
                 }
             }
             qs.questIndex = 0;
@@ -106,7 +114,7 @@ public class questManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        initializeAllQuest();
     }
 
     // Update is called once per frame
