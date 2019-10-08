@@ -187,13 +187,3 @@ public class quest : ScriptableObject
     
 }
 
-public class itemQuest : quest
-{
-    public override bool checkQuestDone()
-    {
-
-        //return base.checkQuestDone();
-        gameMng.instance.coroutineStarter(qEvent.qEvent());
-        return false;
-    }
-}
