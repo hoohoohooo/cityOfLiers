@@ -18,13 +18,13 @@ public class npcData : MonoBehaviour
         }
         else
         {
-            print("startHappened");
             if(uniqueId == 0)
             {
                 EditorUtility.SetDirty(manager);
                 EditorUtility.SetDirty(this);
                 manager.npcCount++;
                 uniqueId = manager.npcCount;
+                print("saveHappened");
             }
         }
     }

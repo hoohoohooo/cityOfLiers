@@ -1480,7 +1480,7 @@ GameObject:
   - component: {fileID: 1031953620}
   - component: {fileID: 1031953619}
   m_Layer: 5
-  m_Name: Image
+  m_Name: midCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
