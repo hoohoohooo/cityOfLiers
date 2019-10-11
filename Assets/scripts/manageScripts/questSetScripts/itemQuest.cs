@@ -24,6 +24,7 @@ public class itemQuest : quest
         }
         if (checkCount >= targetCount)
         {
+            checkCount = 0;
             return true;
         }
         else

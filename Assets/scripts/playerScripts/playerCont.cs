@@ -51,6 +51,7 @@ public class playerCont : MonoBehaviour
         }
     }
 
+
     #region cameraCode
     public Transform camPivot;
     enum camState
@@ -145,6 +146,11 @@ public class playerCont : MonoBehaviour
             getItem(tmp);
             
         }
+    }
+    public void getItemDebug()
+    {
+        dummyItem tmp = new dummyItem();
+        getItem(tmp);
     }
     private void Awake()
     {
