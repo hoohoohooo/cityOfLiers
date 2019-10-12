@@ -21,13 +21,31 @@ public class tmpScr : StateMachineBehaviour
     //{
     //    
     //}
-    public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    //public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    //{
+    //    npcAgents agent = animator.transform.GetComponent<npcCont>().agent;
+    //    agent.curState = new combat(agent.curState.plTrn, agent);
+    //    gameMng.instance.plCont.getAttacked(agent.agentTrn.transform);
+    //    //animator.transform.GetComponent<npcCont>().agent.curState = new combat()
+    //}
+    float timer = 0;
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        npcAgents agent = animator.transform.GetComponent<npcCont>().agent;
-        agent.curState = new combat(agent.curState.plTrn, agent);
-        //animator.transform.GetComponent<npcCont>().agent.curState = new combat()
+        timer += Time.deltaTime;
+        if (timer > 0.1f)
+        {
+            npcAgents agent = animator.transform.GetComponent<npcCont>().agent;
+            agent.curState = new combat(agent.curState.plTrn, agent);
+            gameMng.instance.plCont.getAttacked(agent.agentTrn.transform);
+            timer = 0;
+        }
     }
-
+    //public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    //{
+    //    npcAgents agent = animator.transform.GetComponent<npcCont>().agent;
+    //    agent.curState = new combat(agent.curState.plTrn, agent);
+    //    gameMng.instance.plCont.getAttacked(agent.agentTrn.transform);
+    //}
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

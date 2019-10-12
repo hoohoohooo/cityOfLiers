@@ -6,6 +6,7 @@ using UnityEngine;
 public class playerCont : MonoBehaviour
 {
     public Camera cam;
+    public Animator anim;
     enum status
     {
         idle, crouch, walk, run, attack,
@@ -20,6 +21,24 @@ public class playerCont : MonoBehaviour
     public void takeAcid()
     {
 
+    }
+    Vector3 direction;
+    float hitDist = 6;
+    public void getAttacked(Transform enem)
+    {
+        direction = enem.position - transform.position;
+        if (Vector3.Distance(enem.position, transform.position) < hitDist)
+        {
+            if (Vector3.Dot(transform.forward, direction) < 0)
+            {
+                anim.SetBool("getHitB", true);
+            }
+            else
+            {
+                anim.SetBool("getHitF", true);
+            }
+        }
+        
     }
     public void getItem(itemBase item)
     {
@@ -161,7 +180,7 @@ public class playerCont : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
